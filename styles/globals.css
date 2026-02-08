@@ -7,40 +7,58 @@
 
 :root {
   /* Light theme matching Spline blue aesthetic */
-  --bg-primary: #f0f4f8;
-  --bg-card: rgba(255, 255, 255, 0.85);
-  --bg-card-hover: rgba(255, 255, 255, 0.95);
+  --bg-primary: #c6dded;
+  /* Perfect blend match */
+  --bg-card: rgba(235, 245, 255, 0.45);
+  /* Blue-tinted glass */
+  --bg-card-hover: rgba(235, 245, 255, 0.6);
 
   /* Blue accent matching Spline geometry */
-  --blue-primary: #2563eb;
+  --blue-primary: #3b82f6;
+  /* Brighter blue */
   --blue-light: #60a5fa;
   --blue-lighter: #93c5fd;
-  --blue-dark: #1e40af;
+  --blue-dark: #2563eb;
 
   /* Text colors */
-  --text-primary: #1e293b;
-  --text-secondary: #64748b;
-  --text-muted: #94a3b8;
+  --text-primary: #1e3a8a;
+  /* Dark blue text for better contrast/harmony */
+  --text-secondary: #475569;
+  --text-muted: #64748b;
 
   /* Border */
-  --border: rgba(148, 163, 184, 0.2);
-  --border-hover: rgba(37, 99, 235, 0.3);
+  --border: rgba(147, 197, 253, 0.3);
+  /* Blue-tinted border */
+  --border-hover: rgba(59, 130, 246, 0.4);
 }
 
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
+html,
 body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  background-color: var(--bg-primary);
+  /* Ensure overscroll matches */
   font-family:
     'Inter',
     -apple-system,
     BlinkMacSystemFont,
-    'Segoe UI',
+    Segoe UI,
     Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    Fira Sans,
+    Droid Sans,
+    Helvetica Neue,
     sans-serif;
+  height: 100%;
+  /* Ensure full height coverage */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

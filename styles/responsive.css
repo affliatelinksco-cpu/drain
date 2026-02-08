@@ -23,27 +23,8 @@
   animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Mobile Bottom Sheet Styling */
 @media (max-width: 1023px) {
-  .mobile-sheet {
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-top: 1px solid rgba(255, 255, 255, 0.6);
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
-  }
-}
-
-/* Tablet refinements */
-@media (min-width: 640px) and (max-width: 1023px) {
-  .mobile-sheet {
-    background: rgba(255, 255, 255, 0.5);
-    /* Slightly more transparent on tablet */
-    border-radius: 24px;
-    margin: 24px;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-  }
+  /* Mobile/Tablet specific overrides if needed */
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */

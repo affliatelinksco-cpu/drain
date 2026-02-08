@@ -1,7 +1,6 @@
 import { CssBaseline, GeistProvider } from '@geist-ui/core';
 import type { AppProps } from 'next/app';
 import NextHead from 'next/head';
-import GithubCorner from 'react-github-corner';
 // @ts-ignore
 import '../styles/globals.css';
 
@@ -42,12 +41,6 @@ const App = ({ Component, pageProps }: AppProps) => {
   if (!isMounted) return null;
   return (
     <>
-      <GithubCorner
-        href="https://github.com/dawsbot/drain"
-        size="140"
-        bannerColor="#e056fd"
-      />
-
       <WagmiProvider config={wagmiConfig}>
         <QueryClientProvider client={queryClient}>
           <RainbowKitProvider coolMode>

@@ -37,31 +37,25 @@ const TokenRow: React.FunctionComponent<{ token: Tokens[number] }> = ({
     hash: pendingTxn?.blockHash || undefined,
   });
   return (
-    <div key={contract_address}>
+    <div key={contract_address} className="token-row">
       {isLoading && <Loading />}
       <Toggle
         checked={checkedRecords[contract_address as `0x${string}`]?.isChecked}
         onChange={(e) => {
           setTokenChecked(contract_address, e.target.checked);
         }}
-        style={{ marginRight: '18px' }}
         disabled={Boolean(pendingTxn)}
       />
-      <span style={{ fontFamily: 'monospace' }}>
-        {roundedBalance.toString()}{' '}
-      </span>
+      <span className="token-balance">{roundedBalance.toString()}</span>
       <a
         href={`${chain?.blockExplorers?.default.url}/token/${token.contract_address}?a=${address}`}
         target="_blank"
         rel="noreferrer"
+        className="token-symbol"
       >
         {contract_ticker_symbol}
-      </a>{' '}
-      (worth{' '}
-      <span style={{ fontFamily: 'monospace' }}>
-        {usdFormatter.format(token.quote)}
-      </span>
-      )
+      </a>
+      <span className="token-value">{usdFormatter.format(token.quote)}</span>
     </div>
   );
 };
@@ -104,24 +98,29 @@ export const GetTokens = () => {
   }, [isConnected, setTokens, setCheckedRecords]);
 
   if (loading) {
-    return <Loading>Loading</Loading>;
+    return (
+      <div className="flex justify-center py-8">
+        <Loading>Scanning blockchain...</Loading>
+      </div>
+    );
   }
 
   if (error) {
-    return <div>{error}</div>;
+    return (
+      <div className="text-[var(--neon-pink)] text-center py-4">{error}</div>
+    );
   }
 
   return (
-    <div style={{ margin: '20px' }}>
-      {isConnected && tokens?.length === 0 && `No tokens on ${chain?.name}`}
+    <div className="w-full space-y-2">
+      {isConnected && tokens?.length === 0 && (
+        <div className="text-center py-8 text-[var(--text-secondary)]">
+          No tokens detected on {chain?.name}
+        </div>
+      )}
       {tokens.map((token) => (
         <TokenRow token={token} key={token.contract_address} />
       ))}
-      {/* {isConnected && (
-        <Button style={{ marginLeft: '20px' }} onClick={() => fetchData()}>
-          Refetch
-        </Button>
-      )} */}
     </div>
   );
 };

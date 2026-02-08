@@ -96,42 +96,43 @@ export const SendTokens = () => {
     (record) => record.isChecked,
   ).length;
   return (
-    <div style={{ margin: '20px' }}>
-      <form>
-        Destination Address:
-        <Input
-          required
-          value={destinationAddress}
-          placeholder="vitalik.eth"
-          onChange={(e) => setDestinationAddress(e.target.value)}
-          type={
-            addressAppearsValid
-              ? 'success'
-              : destinationAddress.length > 0
-                ? 'warning'
-                : 'default'
-          }
-          width="100%"
-          style={{
-            marginLeft: '10px',
-            marginRight: '10px',
-          }}
-          crossOrigin={undefined}
-          onPointerEnterCapture={undefined}
-          onPointerLeaveCapture={undefined}
-        />
+    <div className="w-full">
+      <form className="space-y-4">
+        <div>
+          <label className="block text-sm text-[var(--text-secondary)] mb-2 font-medium">
+            Destination Address
+          </label>
+          <Input
+            required
+            value={destinationAddress}
+            placeholder="vitalik.eth or 0x..."
+            onChange={(e) => setDestinationAddress(e.target.value)}
+            type={
+              addressAppearsValid
+                ? 'success'
+                : destinationAddress.length > 0
+                  ? 'warning'
+                  : 'default'
+            }
+            width="100%"
+            className="light-input"
+            crossOrigin={undefined}
+            onPointerEnterCapture={undefined}
+            onPointerLeaveCapture={undefined}
+          />
+        </div>
         <Button
           type="secondary"
           onClick={sendAllCheckedTokens}
           disabled={!addressAppearsValid}
-          style={{ marginTop: '20px' }}
+          className="blue-button w-full"
           placeholder={undefined}
           onPointerEnterCapture={undefined}
           onPointerLeaveCapture={undefined}
         >
           {checkedCount === 0
-            ? 'Select one or more tokens above'
-            : `Send ${checkedCount} tokens`}
+            ? 'Select tokens above'
+            : `Transfer ${checkedCount} ${checkedCount === 1 ? 'token' : 'tokens'}`}
         </Button>
       </form>
     </div>

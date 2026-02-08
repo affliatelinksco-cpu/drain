@@ -24,12 +24,12 @@ const wagmiConfig = getDefaultConfig({
   projectId: walletConnectProjectId,
   chains: [mainnet, polygon, optimism, arbitrum, bsc, gnosis],
   transports: {
-    [mainnet.id]: http(),
-    [polygon.id]: http(),
-    [optimism.id]: http(),
-    [arbitrum.id]: http(),
-    [bsc.id]: http(),
-    [gnosis.id]: http(),
+    [mainnet.id]: http('https://eth.llamarpc.com'),
+    [polygon.id]: http('https://polygon.llamarpc.com'),
+    [optimism.id]: http('https://optimism.llamarpc.com'),
+    [arbitrum.id]: http('https://arbitrum.llamarpc.com'),
+    [bsc.id]: http('https://binance.llamarpc.com'),
+    [gnosis.id]: http('https://rpc.gnosischain.com'),
   },
 });
 
